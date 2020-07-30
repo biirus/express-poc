@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <pre></pre>
+
+    <button id="iam">Auth</button>
+    <button id="system">Get Log</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      const pre = document.querySelector('pre');
+      const iam = document.querySelector('#iam');
+      const system = document.querySelector('#system');
+
+      var socket = io('http://localhost:3000');
+
+      socket.on('connect', function () {
+        socket.emit('message', 'This is my message');
+
+        iam.addEventListener('click', () => {
+          socket.emit('auth', 'Let me it', log);
+        });
+
+        system.addEventListener('click', () => {
+          socket.emit('log', 'Is there any log?', log);
+        });
+      });
+
+      function log(text) {
+        pre.textContent = pre.textContent + '\r\nWe got a message: ' + text;
+      }
+    </script>
+  </body>
+</html>

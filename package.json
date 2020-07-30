@@ -7,11 +7,12 @@
     "express": "^4.17.1",
     "http-proxy": "^1.18.1",
     "request": "^2.88.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js & node clusters/iam & node clusters/system"
+    "start": "node clusters/iam & node clusters/system & node index.js"
   },
   "repository": {
     "type": "git",
